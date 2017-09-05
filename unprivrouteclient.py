@@ -65,7 +65,7 @@ class privRouteClient():
             {
                 "True" : lambda : eprint("Successfully added routes."),
                 "False" : lambda : eprint ("An error occured when trying to add the routes: {}".format(parsed["Error"])),
-            }.get(parsed["Status"], lambda parsed : eprint("Incorrect Status received: {}".format(parsed["Status"])))()
+            }.get(parsed["Status"], lambda : eprint("Incorrect Status received: {}".format(parsed["Status"])))()
 
     def run(self):
         self.context = zmq.Context()
