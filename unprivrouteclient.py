@@ -3,6 +3,19 @@
 # This application gets contacts the system's privileged route setter and asks it to add routes to the main routing table for a given DN.
 # The DNs are mapped to the belonging routes. Routes can not be specified client side.
 
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 import argparse
 import ipaddress
 import json
@@ -74,6 +87,21 @@ if __name__ == '__main__':
         dest="port",
         nargs = "?",
         default = "6001"
+        )
+    parser.add_argument(
+        "verb",
+        nargs='?',
+        help="Add or delete the route",
+        )
+    parser.add_argument(
+        "route",
+        nargs='?',
+        help="route",
+        )
+    parser.add_argument(
+        "common name",
+        nargs='?',
+        help="common name",
         )
     args = parser.parse_args()
     pClient = privRouteClient(args.ip, args.port)
